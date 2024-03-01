@@ -1,0 +1,9 @@
+.me-auto {
+    display: flex;
+    width: 40%;
+    background-color: rgba(150, 150, 150, 0.966);
+    font-size: 18px;
+    font-weight: bold;   
+    margin-left: 100px;
+    
+}
