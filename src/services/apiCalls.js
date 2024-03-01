@@ -1,21 +1,17 @@
 import axios from "axios";
 
-// Set the base URL for axios to your backend API
 axios.defaults.baseURL = "https://fsd-project4.vercel.app";
 
-// Register a new user
 export const registerUser = async (userData) => {
  const res = await axios.post('/api/auth/register', userData);
  return res.data;
 };
 
-// Login a user
 export const userLogin = async (credentials) => {
  const res = await axios.post('/api/auth/login', credentials);
- return res.data; // Assuming the token is returned in the response
+ return res.data; 
 };
 
-// Get a user's profile
 export const getUserById = async (token) => {
  const config = {
     headers: {
@@ -26,7 +22,6 @@ export const getUserById = async (token) => {
  return res.data;
 };
 
-// Update a user's profile
 export const updateProfile = async (token, profileData) => {
  const config = {
     headers: {
@@ -37,13 +32,11 @@ export const updateProfile = async (token, profileData) => {
  return res.data;
 };
 
-// Get all artists
 export const getArtists = async () => {
  const res = await axios.get('/api/auth/artists');
  return res.data;
 };
 
-// Delete an appointment
 export const deleteAppointment = async (token, appointmentId) => {
  const config = {
     headers: {
@@ -54,7 +47,6 @@ export const deleteAppointment = async (token, appointmentId) => {
  return res.data;
 };
 
-// Get all appointments
 export const getAppointments = async (token) => {
  const config = {
     headers: {
@@ -65,9 +57,7 @@ export const getAppointments = async (token) => {
  return res.data;
 };
 
-// Admin operations
 
-// Get all artists as admin
 export const getArtistsAdmin = async (token) => {
  const config = {
     headers: {
@@ -78,7 +68,6 @@ export const getArtistsAdmin = async (token) => {
  return res.data;
 };
 
-// Get all users as admin
 export const bringAllUsers = async (token) => {
  const config = {
     headers: {
@@ -89,7 +78,6 @@ export const bringAllUsers = async (token) => {
  return res.data;
 };
 
-// Delete a user as admin
 export const deleteUserAdmin = async (token, userId) => {
  const config = {
     headers: {
