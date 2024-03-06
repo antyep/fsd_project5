@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://fsd-project4.vercel.app";
+axios.defaults.baseURL = "http://localhost:3000/";
 
 export const registerUser = async (userData) => {
  const res = await axios.post('/api/auth/register', userData);
@@ -87,17 +87,3 @@ export const deleteUserAdmin = async (token, userId) => {
  const res = await axios.delete(`/api/${userId}`, config);
  return res.data;
 };
-
-// todo
-
-export const bringFilteredUsers = async (name, role) => {
-    const res = await axios.get(`http://localhost:27017/user/megafiltro?name=${name}&role=${role}`)
-    console.log(res, 'soy res en apicalls')
-    return res.data
-}
-
-
-export const bringUsersByRole = async (role) => {
-    const res = await axios.get(`http://localhost:27017/user?role=${role}`)
-    return res.data
-}
