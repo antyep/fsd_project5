@@ -1,10 +1,10 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Register } from "../Register/Register"
-import { Home } from "../Home/Home"
-import { Profile } from "../Profile/Profile"
-import { Admin } from "../Admin/Admin"
+import { Register } from "./Register/Register"
+import { Home } from "./Home/Home"
+import { Profile } from "./Profile/Profile"
+import { Admin } from "./Admin/Admin"
 
-export const Body = () => {
+export const MainRouter = () => {
 
     return (
         <>
@@ -14,7 +14,6 @@ export const Body = () => {
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/admin" element={<Admin />} />
-                
             </Routes>
         </>
     )

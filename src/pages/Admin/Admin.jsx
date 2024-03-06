@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   bringAllUsers,
-  bringFilteredUsers,
-  bringUsersByRole,
   getUserById,
 } from "../../services/apiCalls";
 import { A } from "../../components/Accordion/Accordion.jsx";
@@ -40,26 +38,6 @@ export const Admin = () => {
   const inputHandler = (e) => {
     setFinder(e.target.value);
   };
-
-  const roleFilterHandler = (e) => {
-    const role = e.target.value;
-    bringUsersByRole(role).then((res) => {
-      setUsuariosEncontrados(res)
-      console.log(res, 'soy res de bringUsersByRole');
-    });
-  };
-
-  const megafiltradoHandler = (e) => {
-    const role = e.target.value;
-    const username = finder
-    console.log(username, role, "estos son los datos en la vista ADMIN")
-    bringFilteredUsers(username, role)
-    .then((res) => {
-      console.log(res)
-      setUsuariosEncontrados(res)
-    })
-    .catch((err) => { console.log(err, ' el megafiltro nos ha fallado por última vez')})
-  }
 
   const bringPaginatedUsers = (arg) => {
     bringAllUsers(page).then((res) => {
@@ -169,16 +147,6 @@ export const Admin = () => {
         ) : (
           <img src="../../../public/loading.gif"></img>
         )}
-        <select className="form-select" onChange={(e) => megafiltradoHandler(e)}>
-          <option>Selecciona un rol</option>
-          {roles.map((rol, i) => {
-            return (
-              <option value={rol} key={i}>
-                {rol}
-              </option>
-            );
-          })}
-        </select>
       </div>
       <div className="userDetail">
         <h3>

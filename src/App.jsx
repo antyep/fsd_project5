@@ -2,12 +2,13 @@
 import "./App.css";
 import { Footer } from "./components/Footer/Footer";
 import { Header } from "./components/Header/Header";
-import { Body } from "./pages/Body/Body";
+import { MainRouter } from "./pages/MainRouter";
 
 function App() {
   return (
     <>
-      <Body />
+      <Header />
+      <MainRouter />
       <Footer />
     </>
   );

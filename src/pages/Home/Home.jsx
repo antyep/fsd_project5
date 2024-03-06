@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { ErrorModal } from "../../components/ErrorModal/ErrorModal";
 import { inputValidator, keyValidator } from "../../services/validator";
+import { useNavigate } from "react-router-dom"
 
 export const Home = () => {
   const [credentials, setCredentials] = useState({
@@ -19,6 +20,7 @@ export const Home = () => {
   });
   const [smShow, setSmShow] = useState(false)
   const [validPassword, setValidPassword] = useState(false)
+  const navigate = useNavigate()
 
   // instancio redux en modo escritura
   const dispatch = useDispatch();
@@ -42,15 +44,19 @@ export const Home = () => {
     const validatedCredentials = keyValidator(credentials, ['email', 'password'])
     if (inputValidator("email", validatedCredentials.email) && inputValidator("password", validatedCredentials.password)){
     userLogin(credentials)
-      .then((token) => {
+      .then((response) => {
+        const token = response.token
         const decodedToken = jwtDecode(token);
+
         const data = {
           token: token,
           userData: decodedToken,
         };
         dispatch(login({ credentials: data }));
+        navigate("/profile");
       })
       .catch((err) => {
+        console.log('err', err)
         setError((prevState) => ({
           ...prevState,
           errorStatus: err.response.status,

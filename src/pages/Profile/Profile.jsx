@@ -9,6 +9,7 @@ import { userData } from "../userSlice";
 export const Profile = () => {
   const navigate = useNavigate();
   const [profileData, setProfileData] = useState({});
+  const [newProfileData, setNewProfileData] = useState({})
   const [isEditing, setIsEditing] = useState(false);
   const userRdxData = useSelector(userData)
 
@@ -22,62 +23,64 @@ export const Profile = () => {
       setTimeout(() => {     // setTimeout para hacer más amable el acceso a los datos de perfil
         getUserById(token, myId)
         .then((res) => {
-          console.log(res, "soy la respuesta del server")
-          setProfileData(res);
+          console.log("Response", res)
+          setProfileData(res.user);
       })
       }, 2000);
     }
   }, []);
 
-  const inputHandler = (event) => {
-    setProfileData((prevState) => ({
+  const handleInputChange = (event) => {
+    setNewProfileData((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
 
-  useEffect (()=> {
-    console.log(profileData)
-  }, [profileData])
-
-  const buttonHandler = () => {
+  const handleEditButton = () => {
+    setNewProfileData(profileData);
     setIsEditing(!isEditing);
-    console.log(isEditing)
-
-    // if (isEditing === false) {
-    //     setIsEditing(true)
-    // } else {
-    //     setIsEditing(false)
-    // }
   };
 
-  useEffect(() => {
-    console.log(profileData);
-  }, [profileData]);
+  const handleSaveButton = () => {
+    console.log('data to be saved', newProfileData)
+    alert('Saved!')
+    setIsEditing(false)
+  }
+
+  if (isEditing) {
+    return (    
+    <div className="profileDesign">
+      <CustomInput
+          label="Username"
+          name="username"  
+          type="text"
+          value={newProfileData.username}
+          handler={handleInputChange}
+        />
+      <CustomInput
+        label="Email"
+        name="email"  
+        type="text"
+        value={newProfileData.email}
+        handler={handleInputChange}
+      />
+      <button onClick={handleEditButton}>Cancel</button>
+      <button onClick={handleSaveButton}>Save</button>
+    </div>)
+  }
 
   return (
     <div className="profileDesign">
-      
-
-      { !!profileData.email 
-      ?
-      <>
-        <h1>{profileData.createdAt}</h1>
-        <h1>{profileData.email}</h1>
-        <h1>{profileData.role}</h1>
-        <h1>{profileData._id}</h1>
-      </> 
-      : <p>Cargando datos de perfil...</p>
+      { !!profileData.email ? (
+          <>
+            <h5>Username: {profileData.username}</h5>
+            <h5>Email: {profileData.email}</h5>
+          </>
+        ) 
+        : <p>Cargando datos de perfil...</p>
       }
-      <button onClick={() => buttonHandler()}></button>
-      {isEditing 
-      ? (
-        <CustomInput
-          name="firstName"  
-          type="text"
-          handler={inputHandler}
-        ></CustomInput>
-      ) : null}
+      <button onClick={handleEditButton}></button>
     </div>
   );
 };

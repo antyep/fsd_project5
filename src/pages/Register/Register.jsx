@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
 import { useNavigate } from "react-router-dom"
+import axios from "axios";
 
 export const Register = () => {
 
     const [userData, setUserData] = useState({
-        name: '',
-        email:'',
-        password: ''
+        username: '',
+        password:'',
+        email: ''
     })
 
     const navigate = useNavigate()
@@ -19,6 +20,17 @@ export const Register = () => {
         }))
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try{
+            const res = await axios.post('/api/auth/register', userData);
+            console.log(res.data);
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+
     useEffect (() => {
         console.log('hemos pasado por register, pero teníamos prisa')
         // navigate('/')
@@ -26,10 +38,12 @@ export const Register = () => {
 
     return (
         <div className="miDiv">
-            <CustomInput type={"text"} name={"name"} handler={inputHandler} ></CustomInput>
-            <CustomInput type={"email"} name={"email"} handler={inputHandler} ></CustomInput>
-            <CustomInput type={"password"} name={"password"} handler={inputHandler} ></CustomInput>
-            <h1>patata</h1>
+            <form onSubmit={handleSubmit}>
+            <CustomInput type={"text"} name={"username"} handler={inputHandler} placeholder="Set an username"></CustomInput>
+            <CustomInput type={"password"} name={"password"} handler={inputHandler} placeholder="Set your password"/>
+            <CustomInput type={"email"} name={"email"} handler={inputHandler} placeholder="Fill your email" ></CustomInput>
+            <button type="submit">Register</button>
+            </form>
         </div>
     )
 }
