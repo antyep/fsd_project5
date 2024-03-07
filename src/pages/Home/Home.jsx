@@ -35,8 +35,8 @@ export const Home = () => {
     }));
     if (event.target.name === "password") {
       
-      // este inputValidator YA DEVUELVE TRUE O FALSE
-    setValidPassword(inputValidator("password", event.target.value))
+      
+        setValidPassword(inputValidator("password", event.target.value))
   }
   };
 
@@ -68,7 +68,7 @@ export const Home = () => {
         }, 2000);
       });
     }
-    else { console.log('el validador ha funcionado') }
+    else { console.log('Validator is not working') }
   };
 
   const closeModalHandler = () => {
@@ -85,18 +85,22 @@ export const Home = () => {
 
   return (
     <div>
+        <div class= "EmailInput">
       <CustomInput
         placeholder={"Email"}
         type={"email"}
         name={"email"}
         handler={inputHandler}
       ></CustomInput>
+      </div>
+      <div class= "PasswordInput">
       <CustomInput
         placeholder={"Password"}
         type={"password"}
         name={"password"}
         handler={inputHandler}
       ></CustomInput>
+      </div>
       <h1>{credentials.name}</h1>
       <div className="apiCallButton" onClick={buttonHandler}>
         Login
