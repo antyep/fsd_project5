@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Header.css"; // Asegúrate de que este archivo CSS esté en la misma carpeta que Header.jsx
+import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, userData } from "../../pages/userSlice";
@@ -29,16 +29,13 @@ export const Header = () => {
 
  return (
     <>
-      {/* Logo fijo en la parte superior */}
       <div className="logo-container">
         <img src={logo} className="MainLogo" alt="Logo" />
       </div>
 
-      {/* Navbar de Bootstrap con fondo personalizado */}
       <Navbar expand="lg" className="navbar-custom" id="navbar">
         <Container>
           <Navbar.Brand href="navbar-main" className="mx-auto">
-            {/* Aquí puedes colocar un texto de marca si lo prefieres, pero el logo ya está arriba */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
