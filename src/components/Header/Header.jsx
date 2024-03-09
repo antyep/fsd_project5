@@ -1,6 +1,6 @@
 // Header.jsx
 
-import React from 'react';
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -10,24 +10,22 @@ import "./Header.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, userData } from "../../pages/userSlice";
-import logo from '../../img/logo.png';
+import logo from "../../img/logo.png";
 
 export const Header = () => {
- const navigate = useNavigate();
- const dispatch = useDispatch();
- const userRdxData = useSelector(userData);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userRdxData = useSelector(userData);
 
- const token = userRdxData.credentials.token;
- const decoded = userRdxData.credentials.userData;
+  const token = userRdxData.credentials.token;
+  const decoded = userRdxData.credentials.userData;
 
- const logMeOut = () => {
-    dispatch(logout({credentials: {}}));
-    setTimeout(() => {
-      navigate("/");
-    });
- };
+  const logMeOut = () => {
+    dispatch(logout({ credentials: {} }));
+    navigate("/");
+   };
 
- return (
+  return (
     <>
       <div className="logo-container">
         <img src={logo} className="MainLogo" alt="Logo" />
@@ -35,8 +33,7 @@ export const Header = () => {
 
       <Navbar expand="lg" className="navbar-custom" id="navbar">
         <Container>
-          <Navbar.Brand href="navbar-main" className="mx-auto">
-          </Navbar.Brand>
+          <Navbar.Brand href="navbar-main" className="mx-auto"></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -44,19 +41,29 @@ export const Header = () => {
               <Nav.Link href="Artists">Artists</Nav.Link>
               <NavDropdown title="You have an account?" id="basic-nav-dropdown">
                 {!token ? (
-                 <>
-                    <NavDropdown.Item href="#action/3.1">Sign In</NavDropdown.Item>
-                    <NavDropdown.Item href="register">Register</NavDropdown.Item>
-                 </>
+                  <>
+                    <NavDropdown.Item href="#action/3.1">
+                      Sign In
+                    </NavDropdown.Item>
+                    <NavDropdown.Item href="register">
+                      Register
+                    </NavDropdown.Item>
+                  </>
                 ) : (
-                 <>
+                  <>
                     <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
-                    {decoded.role === 'ADMIN' 
-                      ? <NavDropdown.Item href="admin">Admin</NavDropdown.Item> 
-                      : <NavDropdown.Item href="">My appointments</NavDropdown.Item>}
+                    {decoded.role === "ADMIN" ? (
+                      <NavDropdown.Item href="admin">Admin</NavDropdown.Item>
+                    ) : (
+                      <NavDropdown.Item href="">
+                        My appointments
+                      </NavDropdown.Item>
+                    )}
                     <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={() => logMeOut()}>Log Out</NavDropdown.Item>
-                 </>
+                    <NavDropdown.Item onClick={() => logMeOut()}>
+                      Log Out
+                    </NavDropdown.Item>
+                  </>
                 )}
               </NavDropdown>
             </Nav>
@@ -64,5 +71,5 @@ export const Header = () => {
         </Container>
       </Navbar>
     </>
- );
+  );
 };

@@ -32,9 +32,8 @@ export const Register = () => {
 
 
     useEffect (() => {
-        console.log('hemos pasado por register, pero teníamos prisa')
-        // navigate('/')
-    }, [])
+        
+        }, [])
 
     return (
         <div className="miDiv">

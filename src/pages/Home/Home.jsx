@@ -22,10 +22,8 @@ export const Home = () => {
   const [validPassword, setValidPassword] = useState(false)
   const navigate = useNavigate()
 
-  // instancio redux en modo escritura
   const dispatch = useDispatch();
 
-  // instancio redux en modo lectura
   const userRdxData = useSelector(userData);
 
   const inputHandler = (event) => {

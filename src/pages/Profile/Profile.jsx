@@ -20,7 +20,7 @@ export const Profile = () => {
     if (!token) {
       navigate("/register");
     } else {
-      setTimeout(() => {     // setTimeout para hacer más amable el acceso a los datos de perfil
+      setTimeout(() => {   
         getUserById(token, myId)
         .then((res) => {
           console.log("Response", res)
@@ -78,7 +78,7 @@ export const Profile = () => {
             <h5>Email: {profileData.email}</h5>
           </>
         ) 
-        : <p>Cargando datos de perfil...</p>
+        : <p>Loading profile details...</p>
       }
       <button onClick={handleEditButton}></button>
     </div>
