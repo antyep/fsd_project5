@@ -1,0 +1,18 @@
+.footer {
+  display: block;
+    width: 100%;
+    background-color: #0b0b0b;
+    color: #a4a4a4; 
+    margin-top: 38.4em;
+  }
+  
+  .footer-bottom {
+    background-color: #1b1b1b;
+    text-align: center;
+  }
+  
+  .MediaBox {
+    justify-content: center;
+    margin-left: 150px;
+    margin-top: 25px;
+  }
