@@ -7,6 +7,7 @@ import { Artists } from "./Artists/Artists";
 import { Admin } from "./Admin/Admin";
 import { Contact } from "./Contact/Contact";
 import { CreateAppointment } from "./CreateAppointment/CreateAppointment";
+import { Appointments } from "./Appointments/Appointments";
 
 export const MainRouter = () => {
   return (
@@ -20,6 +21,7 @@ export const MainRouter = () => {
         <Route path="/artists" element={<Artists />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/appointments" element={<Appointments />} />
         <Route
           path="/createappointment/:artistId"
           element={<CreateAppointment />}

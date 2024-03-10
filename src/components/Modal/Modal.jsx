@@ -1,7 +1,16 @@
 import BootstrapModal from "react-bootstrap/Modal";
+import PropTypes from "prop-types";
 import "./Modal.css";
 
-export const Modal = ({ title, message, show, handleClose }) => {
+export const Modal = ({
+  title,
+  message,
+  show,
+  handleClose,
+  handleConfirm,
+  handleCancel,
+  confirmText,
+}) => {
   return (
     <BootstrapModal
       size="sm"
@@ -16,10 +25,30 @@ export const Modal = ({ title, message, show, handleClose }) => {
       </BootstrapModal.Header>
       <BootstrapModal.Body>{message}</BootstrapModal.Body>
       <BootstrapModal.Footer>
-        <button className="ok-button" onClick={handleClose}>
-          Ok
-        </button>
+        <div className="modal-buttons">
+          {handleCancel && (
+            <button className="cancel-button" onClick={handleCancel}>
+              Cancel
+            </button>
+          )}
+          <button
+            className="ok-button"
+            onClick={handleConfirm ? handleConfirm : handleClose}
+          >
+            {confirmText ? confirmText : "Ok"}
+          </button>
+        </div>
       </BootstrapModal.Footer>
     </BootstrapModal>
   );
+};
+
+Modal.propTypes = {
+  title: PropTypes.string,
+  message: PropTypes.string,
+  show: PropTypes.bool,
+  handleCancel: PropTypes.func,
+  handleClose: PropTypes.func,
+  handleConfirm: PropTypes.func,
+  confirmText: PropTypes.string,
 };

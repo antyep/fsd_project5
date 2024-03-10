@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { userData } from "../userSlice";
 
 export const Artists = () => {
-  const [query, setQuery] = useState({});
   const [artists, setArtists] = useState([]);
 
   const userRdxData = useSelector(userData);
@@ -15,9 +14,8 @@ export const Artists = () => {
 
   useEffect(() => {
     getArtists().then((res) => {
-      const { results, ...pagination } = res;
+      const { results } = res;
       setArtists(results);
-      setQuery(pagination);
     });
   }, []);
 
@@ -27,10 +25,10 @@ export const Artists = () => {
       <div className="artists-list">
         {artists.map((artist) => (
           <div key={artist.id} className="artists-list-item">
-            <div className="item-name">{artist.name}</div>
+            <div className="artist-item-name">{artist.name}</div>
             {token && (
               <Link to={`/createappointment/${artist.id}`}>
-                <div className="item-button">Create appointment</div>
+                <div className="artist-item-button">Create appointment</div>
               </Link>
             )}
           </div>

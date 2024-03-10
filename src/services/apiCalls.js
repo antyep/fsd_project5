@@ -94,13 +94,23 @@ export const getArtistsAdmin = async (token) => {
 
 // APPOINTMENTS
 
-export const getAppointments = async (token) => {
+export const getUserAppointments = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
   const res = await axios.get("/api/appointments", config);
+  return res.data;
+};
+
+export const getArtistAppointments = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const res = await axios.get("/api/appointments/artist", config);
   return res.data;
 };
 

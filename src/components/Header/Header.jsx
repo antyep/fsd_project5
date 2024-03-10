@@ -40,10 +40,10 @@ export const Header = () => {
           {token && (
             <>
               <Link to="profile">Profile</Link>
-              {decoded.role === "ADMIN" ? (
+              {decoded.userRoles === "ADMIN" ? (
                 <Link to="admin">Admin</Link>
               ) : (
-                <Link to="">My appointments</Link>
+                <Link to="/appointment">My appointments</Link>
               )}
               <a className="link-item" onClick={() => logMeOut()}>
                 Log Out

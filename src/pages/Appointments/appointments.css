@@ -1,47 +1,46 @@
-.artists-wrapper {
+.appointments-wrapper {
   max-width: 420px;
   margin: 0 auto;
   padding-top: 120px;
 }
-.artists-title {
+.appointments-title {
   margin-bottom: 20px;
 }
-.artists-list {
+.appointments-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.artists-list-item {
+.appointments-list-item {
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
 }
 
-.artist-item-name {
+.item-name {
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 10px;
 }
 
-.artist-item-button {
-  background-color: #222;
+.delete-appointment-button {
+  border: 1px solid #222;
   border-radius: 4px;
-  border-style: none;
   box-sizing: border-box;
-  color: #fff;
+  color: #222;
   cursor: pointer;
   display: inline-block;
   font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1.5;
   margin: 0;
   max-width: none;
-  min-height: 44px;
+  min-height: 32px;
   min-width: 10px;
   outline: none;
   overflow: hidden;
-  padding: 10px 20px;
+  padding: 5px 10px;
   position: relative;
   text-align: center;
   text-transform: none;
@@ -50,4 +49,15 @@
   touch-action: manipulation;
   width: auto;
   transition: all 0.2s;
+}
+
+.appointments-list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-username {
+  font-weight: 500;
+}
+.item-email {
 }

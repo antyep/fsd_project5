@@ -45,6 +45,8 @@ export const Login = () => {
           const token = response.token;
           const decodedToken = jwtDecode(token);
 
+          console.log("decodedToken", { response, decodedToken });
+
           const data = {
             token: token,
             userData: decodedToken,
