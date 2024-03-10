@@ -1,10 +1,4 @@
-// Header.jsx
-
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 import { useNavigate } from "react-router-dom";
@@ -23,53 +17,41 @@ export const Header = () => {
   const logMeOut = () => {
     dispatch(logout({ credentials: {} }));
     navigate("/");
-   };
+  };
 
   return (
-    <>
-      <div className="logo-container">
-        <img src={logo} className="MainLogo" alt="Logo" />
+    <div className="navbar-wrapper">
+      <div className="navbar-content">
+        <div className="navbar-left">
+          <div className="logo-container">
+            <img src={logo} className="MainLogo" alt="Logo" />
+          </div>
+        </div>
+        <div className="navbar-right">
+          <Link to="/">Home</Link>
+          <Link to="Artists">Artists</Link>
+          <Link to="Contact">Contact</Link>
+          {!token && (
+            <>
+              <Link to="/login">Sign In</Link>
+              <Link to="register">Register</Link>
+            </>
+          )}
+          {token && (
+            <>
+              <Link to="profile">Profile</Link>
+              {decoded.role === "ADMIN" ? (
+                <Link to="admin">Admin</Link>
+              ) : (
+                <Link to="">My appointments</Link>
+              )}
+              <a className="link-item" onClick={() => logMeOut()}>
+                Log Out
+              </a>
+            </>
+          )}
+        </div>
       </div>
-
-      <Navbar expand="lg" className="navbar-custom" id="navbar">
-        <Container>
-          <Navbar.Brand href="navbar-main" className="mx-auto"></Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="Artists">Artists</Nav.Link>
-              <NavDropdown title="You have an account?" id="basic-nav-dropdown">
-                {!token ? (
-                  <>
-                    <NavDropdown.Item href="#action/3.1">
-                      Sign In
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="register">
-                      Register
-                    </NavDropdown.Item>
-                  </>
-                ) : (
-                  <>
-                    <NavDropdown.Item href="profile">Profile</NavDropdown.Item>
-                    {decoded.role === "ADMIN" ? (
-                      <NavDropdown.Item href="admin">Admin</NavDropdown.Item>
-                    ) : (
-                      <NavDropdown.Item href="">
-                        My appointments
-                      </NavDropdown.Item>
-                    )}
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={() => logMeOut()}>
-                      Log Out
-                    </NavDropdown.Item>
-                  </>
-                )}
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
+    </div>
   );
 };

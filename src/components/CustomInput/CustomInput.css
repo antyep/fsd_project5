@@ -1,3 +1,23 @@
-input {
-    width: 300px;
+.input-wrapper {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-label-container {
+}
+
+.input-label-label {
+  color: black;
+}
+
+.input-input {
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.input-readonly-value {
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  font-weight: 500;
 }

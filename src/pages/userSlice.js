@@ -25,7 +25,7 @@ export const userSlice = createSlice({
             }
         },
 
-        resetLog: (state, action) => {
+        resetLog: (state) => {
             return {
                 ...state,
                 vecesLoginLogout: 0
