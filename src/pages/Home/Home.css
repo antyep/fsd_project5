@@ -1,18 +1,3 @@
-.miDiv {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  background-color: rgba(24, 24, 15, 0.352);
-}
-
-.characterContainer {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
 .apiCallButton {
   background-color: #222;
   border-radius: 4px;
@@ -59,3 +44,7 @@
     display: flex;
     justify-content: center;
   }
+
+.mainHome {
+  background-color: black;
+}
