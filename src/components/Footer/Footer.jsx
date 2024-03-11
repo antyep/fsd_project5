@@ -8,9 +8,9 @@ export const Footer = () => {
           <a href="instagram.com">Instagram</a>
         </div>
         <div className="main-footer-right">
-          <a href="google.com">Aviso Legal</a>
-          <a href="google.com">Política de privacidad</a>
-          <a href="google.com">Política de cookies</a>
+          <a href="google.com">Legal Notice</a>
+          <a href="google.com">Privacy Policy</a>
+          <a href="google.com">Cookies Policy</a>
         </div>
       </div>
     </footer>

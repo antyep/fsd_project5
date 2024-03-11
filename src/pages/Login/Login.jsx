@@ -64,7 +64,7 @@ export const Login = () => {
           setSmShow(true);
         });
     } else {
-      setValidationError("Por favor, verifica tus credenciales.");
+      setValidationError("Please, verify your credentials.");
     }
   };
 
