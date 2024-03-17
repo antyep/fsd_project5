@@ -50,11 +50,12 @@ export const getUserById = async (token) => {
   return res.data;
 };
 
-export const bringAllUsers = async (token) => {
+export const bringAllUsers = async (token, params) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    params,
   };
   const res = await axios.get("/api/users", config);
   return res.data;
@@ -66,7 +67,7 @@ export const deleteUserAdmin = async (token, userId) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const res = await axios.delete(`/api/${userId}`, config);
+  const res = await axios.delete(`/api/users/${userId}`, config);
   return res.data;
 };
 

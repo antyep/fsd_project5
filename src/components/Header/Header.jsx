@@ -19,6 +19,8 @@ export const Header = () => {
     navigate("/");
   };
 
+  console.log("decoded", decoded);
+
   return (
     <div className="navbar-wrapper">
       <div className="navbar-content">
@@ -40,8 +42,8 @@ export const Header = () => {
           {token && (
             <>
               <Link to="profile">Profile</Link>
-              {decoded.userRoles === "ADMIN" ? (
-                <Link to="admin">Admin</Link>
+              {decoded?.userRoles?.includes("admin") ? (
+                <Link to="/admin">Admin</Link>
               ) : (
                 <Link to="/appointment">My appointments</Link>
               )}
